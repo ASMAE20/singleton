@@ -1,23 +1,35 @@
-public class Client {
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
+public class Client extends Thread{
+
     String name;
-    Terre terre=Terre.getInstance(4000,7000);
 
 
-    public Client(String name){
-        this.name=name;
+        public Client(String name){
+        super(name);
     }
-    public void printHello(){
-        terre.printHello();
-    }
-    public void create(){
-        terre.create();
-    }
-    public void add(){
-        terre.add();
-    }
-    public void display(){
-        terre.display();
-    }
+    // ------------------
+    public void programPequnentiel() {
+        try{
+            System.out.println("Tu es  "+this.getName()+"-"+this.getId());
+            Terre terre=Terre.getInstance(4000,7000);
+
+        }catch(Exception e){
+
+            System.out.println("Exception is caught");
+        }
+       }
+
+       // -------------
+       @Override
+     public   void run(){
+                try{
+                    System.out.println("Tu es  "+this.getName()+"-"+this.getId());
+                    Terre terre = Terre.getInstance(4000, 7000);
+                }catch(Exception e){
+                    System.out.println("Exception is caught");
+                }
+    }}
 
 
-}

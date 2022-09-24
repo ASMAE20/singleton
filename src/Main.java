@@ -1,12 +1,28 @@
-public class Main {
+import java.awt.*;
+import java.util.Scanner;
+
+public class Main  {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        Terre terre=Terre.getInstance(4000,7000);
+        Scanner scanner=new Scanner(System.in);
+        System.out.println("1-mode sequentiel     2-mode concurrent   |");
+        int mode=scanner.nextInt();
+        if(mode==1) {
 
-//        terre.printHello();
+        for(int i=0;i<6;i++){
+            Client client=new Client("Client");
+            client.programPequnentiel();
+        }
 
-        Client client=new Client("riad");
+        } else if (mode==2) {
+            for(int i=0;i<6;i++){
+                Client client=new Client("Client");
+                client.start();
+            }
+        }else{
+            System.out.println("choix non valide   |");
+        }
 
-        client.printHello();
-    }
+
+
 }
+    }
